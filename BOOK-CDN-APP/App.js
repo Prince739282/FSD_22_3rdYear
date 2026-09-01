@@ -1,4 +1,4 @@
-import Book from "./Book";
+import Book from "./Book.js";
 
 const bookdata = [
   { image: "", title: "ReactJS", price: 465 },

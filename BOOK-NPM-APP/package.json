@@ -1,0 +1,19 @@
+{
+  "name": "my-first-book-app",
+  "version": "1.0.0",
+  "description": "npm_book_app",
+  "scripts": {
+    "start": "parcel index.html",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "parcel": "^2.16.4",
+    "react": "^19.2.8",
+    "react-dom": "^19.2.8"
+  },
+  "devDependencies": {
+    "@babel/preset-react": "^8.0.1"
+  }
+}

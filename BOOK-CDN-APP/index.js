@@ -1,5 +1,5 @@
-import Book from "./Book";
-import App from "./App";
+import Book from "./Book.js";
+import App from "./App.js";
 
 
 const parent = document.getElementById("root");
