@@ -10,7 +10,7 @@ const Book = ({ props }) => {
       <h2>Title: {props.title}</h2>
       <h2>Price: ₹{props.price}</h2>
 
-      <button>Add To Cart</button>
+      <button style={{widht:"100",height:"50px", color:"blue"}}>Add To Cart</button>
     </div>
   );
 };

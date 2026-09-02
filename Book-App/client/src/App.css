@@ -24,6 +24,10 @@ flex-wrap: wrap;
   background-color: maroon;
   text-decoration: none;
   color:white ;
+  display:flex;
+  justify-content: space-evenly;
+  
+
 }
 
 .footer {
