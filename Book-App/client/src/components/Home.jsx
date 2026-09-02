@@ -1,15 +1,22 @@
-import React from 'react'
-import Book from './Book'
+import React from "react";
+import Book from "./Book";
 
 const Home = () => {
-  return (
-    <div className='home'>
-        <div className='bookstore'>
-            <Book/>
-        </div>
-      
-    </div>
-  )
-}
+  const bookdata = [
+    { image: "", title: "ReactJS", price: 375 },
+    { image: "", title: "ReactJS", price: 375 },
+    { image: "", title: "ReactJS", price: 375 },
+  ];
 
-export default Home
+  return (
+    <div className="home">
+      <div className="bookstore">
+        {bookdata.map((b, index) => {
+          return <Book key={index} props={b} />;
+        })}
+      </div>
+    </div>
+  );
+};
+
+export default Home;
