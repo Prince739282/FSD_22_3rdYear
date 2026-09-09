@@ -12,22 +12,22 @@
 .home {
   width: 100vw;
   height: 80vh;
-  
 }
-.bookstore{
-display: flex;
-flex-wrap: wrap;
+.bookstore {
+  display: flex;
+  flex-wrap: wrap;
 }
-.navbar{
+.navbar  {
   width: 100vw;
   height: 4vh;
   background-color: maroon;
   text-decoration: none;
-  color:white ;
-  display:flex;
+  display: flex;
   justify-content: space-evenly;
   
-
+}
+.navbar a{
+  color: white;
 }
 
 .footer {
