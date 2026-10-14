@@ -3,6 +3,7 @@ import UserLayout from "./pages/UserLayout";
 import "./App.css";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Stopwatch from "./components/stopwatch";
+import Login from "./components/Login";
 function App() {
   return (
     <div>
@@ -14,6 +15,7 @@ function App() {
           <Route path="/home" element={<h1>home</h1>} />
           <Route path="/about" element={<h1>about</h1>} />
           <Route path="/stopwatch" element={<Stopwatch />} />
+          <Route path="/login" element={<Stopwatch />} />
         </Routes>
       </BrowserRouter>
     </div>
