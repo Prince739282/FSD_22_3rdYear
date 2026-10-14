@@ -1,8 +1,8 @@
 import React from 'react'
 import { BrowserRouter,Route,Routes } from 'react-router-dom'
-import Login from "./components/Login";
+import Login from './components/Login';
 import Logout from "./components/Logout";
-import Login from "./components/Login";
+
 import AdminDashboard from "./components/AdminDashboard";
 import UserDashboard from "./components/UserDashboard";
 

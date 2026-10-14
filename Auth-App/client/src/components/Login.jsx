@@ -4,14 +4,17 @@ import { useNavigate } from 'react-router-dom';
 const Login = () => {
     const [uname,setUname]=useState("");
     const [pass,setPass]=useState("");
-    const navigate =usenavigate();
+    const navigate =useNavigate();
     const [error,setError]=useState("");
 
-    function handleLogin(){
+    function handleLogin(e){
+        e.preventDefault();
         if(uname ==="admin" && pass==="manager"){
+            localStorage.setItem("isAuthenticated","true");
             navigate("/admin")
         }
         else if(uname==="user" && pass==="abes"){
+            localStorage.setItem("isAuthenticated", "true");
             navigate("/user");
         }
         else{
