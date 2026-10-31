@@ -13,4 +13,7 @@ public class newCircle extends circle{
     void calc_Perimeter(){
         perimeter=2*super.pi*super.radius;
     }
+    newCircle(newCircle c) {
+        this.radius = c.radius;
+    }
 }
