@@ -18,6 +18,15 @@ public class helloServer {
             os.write(message.getBytes());
             os.close();
         });
+        //Create a page at the address /about
+        server.createContext("/about", exchange -> {
+            String message = "This server is part of my FSD practice.";
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
 
         //Start the server
         server.start();
