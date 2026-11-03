@@ -28,6 +28,14 @@ public class helloServer {
             os.close();
         });
 
+        server.createContext("/time", exchange -> {
+            String message = "Current time: " + java.time.LocalDateTime.now();
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
         //Start the server
         server.start();
         System.out.println("Server started. Open http://localhost:8080/hello");
