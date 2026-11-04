@@ -36,6 +36,14 @@ public class helloServer {
             os.write(message.getBytes());
             os.close();
         });
+        server.createContext("/status", exchange -> {
+            String message = "Server is running on port 8080";
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
         //Start the server
         server.start();
         System.out.println("Server started. Open http://localhost:8080/hello");
