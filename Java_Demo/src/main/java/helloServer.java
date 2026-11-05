@@ -44,6 +44,14 @@ public class helloServer {
             os.write(message.getBytes());
             os.close();
         });
+        server.createContext("/info", exchange -> {
+            String message = "Available pages: /hello, /about, /time, /status, /info";
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
         //Start the server
         server.start();
         System.out.println("Server started. Open http://localhost:8080/hello");
