@@ -3,6 +3,7 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
 public class helloServer {
+    static int visitCount = 0;
     public static void main(String[] args) throws Exception {
 
         //Create a server that listens on port 8080
@@ -10,7 +11,8 @@ public class helloServer {
 
         //Create a page at the address /hello
         server.createContext("/hello", exchange -> {
-            String message = "Hello from my first Java server!";
+            visitCount++;
+            String message = "Hello from my first Java server! Visits: " + visitCount;
 
             // send the message to the browser
             exchange.sendResponseHeaders(200, message.length());
