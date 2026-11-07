@@ -3,13 +3,16 @@ import java.io.OutputStream;
 import java.net.InetSocketAddress;
 
 public class helloServer {
+
+    // counts how many times the /hello page has been opened
     static int visitCount = 0;
+
     public static void main(String[] args) throws Exception {
 
-        //Create a server that listens on port 8080
+        // 1. Create a server that listens on port 8080
         HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
 
-        //Create a page at the address /hello
+        // 2. Create a page at the address /hello
         server.createContext("/hello", exchange -> {
             visitCount++;
             String message = "Hello from my first Java server! Visits: " + visitCount;
@@ -20,7 +23,8 @@ public class helloServer {
             os.write(message.getBytes());
             os.close();
         });
-        //Create a page at the address /about
+
+        // 3. Create another page at the address /about
         server.createContext("/about", exchange -> {
             String message = "This server is part of my FSD practice.";
 
@@ -30,6 +34,7 @@ public class helloServer {
             os.close();
         });
 
+        // 4. Create a page at /time that shows the current date and time
         server.createContext("/time", exchange -> {
             String message = "Current time: " + java.time.LocalDateTime.now();
 
@@ -38,6 +43,8 @@ public class helloServer {
             os.write(message.getBytes());
             os.close();
         });
+
+        // 5. Create a page at /status that shows the server is running
         server.createContext("/status", exchange -> {
             String message = "Server is running on port 8080";
 
@@ -46,6 +53,8 @@ public class helloServer {
             os.write(message.getBytes());
             os.close();
         });
+
+        // 6. Create a page at /info that lists all the available pages
         server.createContext("/info", exchange -> {
             String message = "Available pages: /hello, /about, /time, /status, /info";
 
@@ -54,8 +63,24 @@ public class helloServer {
             os.write(message.getBytes());
             os.close();
         });
-        //Start the server
+
+        // 7. Create a page at /visits that shows the count without increasing it
+        server.createContext("/visits", exchange -> {
+            String message = "Total visits to /hello: " + visitCount;
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
+
+        // 8. Start the server
         server.start();
         System.out.println("Server started. Open http://localhost:8080/hello");
+        System.out.println("Also try http://localhost:8080/about");
+        System.out.println("And try http://localhost:8080/time");
+        System.out.println("And try http://localhost:8080/status");
+        System.out.println("And try http://localhost:8080/info");
+        System.out.println("And try http://localhost:8080/visits");
     }
 }
