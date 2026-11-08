@@ -74,7 +74,18 @@ public class helloServer {
             os.close();
         });
 
-        // 8. Start the server
+        // 8. Create a page at /reset that sets the visit count back to 0
+        server.createContext("/reset", exchange -> {
+            visitCount = 0;
+            String message = "Visit count has been reset to 0";
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
+
+        // 9. Start the server
         server.start();
         System.out.println("Server started. Open http://localhost:8080/hello");
         System.out.println("Also try http://localhost:8080/about");
@@ -82,5 +93,6 @@ public class helloServer {
         System.out.println("And try http://localhost:8080/status");
         System.out.println("And try http://localhost:8080/info");
         System.out.println("And try http://localhost:8080/visits");
+        System.out.println("And try http://localhost:8080/reset");
     }
 }
