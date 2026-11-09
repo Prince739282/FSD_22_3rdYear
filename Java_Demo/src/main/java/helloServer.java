@@ -4,13 +4,16 @@ import java.net.InetSocketAddress;
 
 public class helloServer {
 
+    // the port number the server listens on
+    static final int PORT = 8080;
+
     // counts how many times the /hello page has been opened
     static int visitCount = 0;
 
     public static void main(String[] args) throws Exception {
 
-        // 1. Create a server that listens on port 8080
-        HttpServer server = HttpServer.create(new InetSocketAddress(8080), 0);
+        // 1. Create a server that listens on the PORT number
+        HttpServer server = HttpServer.create(new InetSocketAddress(PORT), 0);
 
         // 2. Create a page at the address /hello
         server.createContext("/hello", exchange -> {
@@ -46,7 +49,7 @@ public class helloServer {
 
         // 5. Create a page at /status that shows the server is running
         server.createContext("/status", exchange -> {
-            String message = "Server is running on port 8080";
+            String message = "Server is running on port " + PORT;
 
             exchange.sendResponseHeaders(200, message.length());
             OutputStream os = exchange.getResponseBody();
