@@ -10,6 +10,9 @@ public class helloServer {
     // counts how many times the /hello page has been opened
     static int visitCount = 0;
 
+    // remembers when the server started (in milliseconds)
+    static long startTime = System.currentTimeMillis();
+
     public static void main(String[] args) throws Exception {
 
         // 1. Create a server that listens on the PORT number
@@ -88,7 +91,18 @@ public class helloServer {
             os.close();
         });
 
-        // 9. Start the server
+        // 9. Create a page at /uptime that shows how long the server has been running
+        server.createContext("/uptime", exchange -> {
+            long seconds = (System.currentTimeMillis() - startTime) / 1000;
+            String message = "Server has been running for " + seconds + " seconds";
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
+
+        // 10. Start the server
         server.start();
         System.out.println("Server started. Open http://localhost:8080/hello");
         System.out.println("Also try http://localhost:8080/about");
@@ -97,5 +111,6 @@ public class helloServer {
         System.out.println("And try http://localhost:8080/info");
         System.out.println("And try http://localhost:8080/visits");
         System.out.println("And try http://localhost:8080/reset");
+        System.out.println("And try http://localhost:8080/uptime");
     }
 }
