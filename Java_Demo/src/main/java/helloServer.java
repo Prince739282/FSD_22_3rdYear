@@ -1,3 +1,10 @@
+/*
+ * helloServer.java
+ * A simple Java web server built with the JDK's built-in HttpServer.
+ * Pages: /hello, /about, /time, /status, /info, /visits, /reset, /uptime
+ * Run this file, then open http://localhost:8080/info in a browser.
+ */
+
 import com.sun.net.httpserver.HttpServer;
 import java.io.OutputStream;
 import java.net.InetSocketAddress;
