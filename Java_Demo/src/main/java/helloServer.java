@@ -69,7 +69,7 @@ public class helloServer {
 
         // 6. Create a page at /info that lists all the available pages
         server.createContext("/info", exchange -> {
-            String message = "Available pages: /hello, /about, /time, /status, /info";
+            String message = "Available pages: /hello, /about, /time, /status, /info, /visits, /reset, /uptime";
 
             exchange.sendResponseHeaders(200, message.length());
             OutputStream os = exchange.getResponseBody();
