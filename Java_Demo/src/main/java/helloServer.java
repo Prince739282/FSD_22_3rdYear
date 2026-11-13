@@ -49,7 +49,9 @@ public class helloServer {
 
         // 4. Create a page at /time that shows the current date and time
         server.createContext("/time", exchange -> {
-            String message = "Current time: " + java.time.LocalDateTime.now();
+            String time = java.time.LocalDateTime.now()
+                    .format(java.time.format.DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss"));
+            String message = "Current time: " + time;
 
             exchange.sendResponseHeaders(200, message.length());
             OutputStream os = exchange.getResponseBody();
