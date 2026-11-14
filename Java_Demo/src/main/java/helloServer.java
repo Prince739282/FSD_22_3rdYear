@@ -1,7 +1,7 @@
 /*
  * helloServer.java
  * A simple Java web server built with the JDK's built-in HttpServer.
- * Pages: /hello, /about, /time, /status, /info, /visits, /reset, /uptime
+ * Pages: /hello, /about, /time, /status, /info, /visits, /reset, /uptime, /goodbye
  * Run this file, then open http://localhost:8080/info in a browser.
  */
 
@@ -71,7 +71,7 @@ public class helloServer {
 
         // 6. Create a page at /info that lists all the available pages
         server.createContext("/info", exchange -> {
-            String message = "Available pages: /hello, /about, /time, /status, /info, /visits, /reset, /uptime";
+            String message = "Available pages: /hello, /about, /time, /status, /info, /visits, /reset, /uptime, /goodbye";
 
             exchange.sendResponseHeaders(200, message.length());
             OutputStream os = exchange.getResponseBody();
@@ -111,7 +111,17 @@ public class helloServer {
             os.close();
         });
 
-        // 10. Start the server
+        // 10. Create a page at /goodbye that says bye to the visitor
+        server.createContext("/goodbye", exchange -> {
+            String message = "Goodbye! Thanks for visiting my server.";
+
+            exchange.sendResponseHeaders(200, message.length());
+            OutputStream os = exchange.getResponseBody();
+            os.write(message.getBytes());
+            os.close();
+        });
+
+        // 11. Start the server
         server.start();
         System.out.println("Server started. Open http://localhost:8080/hello");
         System.out.println("Also try http://localhost:8080/about");
@@ -121,5 +131,6 @@ public class helloServer {
         System.out.println("And try http://localhost:8080/visits");
         System.out.println("And try http://localhost:8080/reset");
         System.out.println("And try http://localhost:8080/uptime");
+        System.out.println("And try http://localhost:8080/goodbye");
     }
 }
